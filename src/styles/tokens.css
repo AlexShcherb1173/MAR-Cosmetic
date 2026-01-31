@@ -1,0 +1,24 @@
+:root{
+    /* Core palette */
+    --bg: #0b0706;            /* почти чёрный шоколад */
+    --bg2: #130c0a;           /* чуть теплее для градиентов */
+    --brown: #2b1611;         /* тёмно-коричневый (банка) */
+    --beige: #e7dfd4;         /* корпоративный беж (лого) */
+    --beige2: #cdbfae;        /* вторичный беж */
+    --ink: #f5efe7;           /* почти белый тёплый */
+    --muted: rgba(231,223,212,.72);
+    --line: rgba(231,223,212,.18);
+
+    /* UI */
+    --radius: 20px;
+    --shadow: 0 24px 70px rgba(0,0,0,.45);
+    --shadow-soft: 0 18px 45px rgba(0,0,0,.28);
+
+    /* Typography */
+    --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-serif: ui-serif, "Georgia", "Times New Roman", serif;
+
+    /* Layout */
+    --container: 1120px;
+    --pad: 22px;
+}

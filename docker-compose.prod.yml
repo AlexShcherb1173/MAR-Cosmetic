@@ -1,0 +1,7 @@
+services:
+  mar:
+    build: .
+    container_name: mar-landing
+    restart: always
+    ports:
+      - "80:80"
