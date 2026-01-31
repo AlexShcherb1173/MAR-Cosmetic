@@ -102,3 +102,58 @@ img{ max-width: 100%; display: block; }
     color: rgba(231,223,212,.88);
     font-size: 13px;
 }
+
+@keyframes marFade {
+    from { opacity: 0; transform: scale(1.03); }
+    to   { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes marFade {
+    from { opacity: 0; transform: scale(1.03); }
+    to   { opacity: 1; transform: scale(1.02); }
+}
+
+/* Thumbnails (мини-превью) */
+.marThumb{
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 10px;
+    align-items: center;
+
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(231,223,212,.16);
+    background: rgba(231,223,212,.06);
+    color: rgba(231,223,212,.86);
+
+    cursor: pointer;
+    transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    min-width: 180px;
+}
+
+.marThumb:hover{
+    transform: translateY(-1px);
+    background: rgba(231,223,212,.10);
+    border-color: rgba(231,223,212,.26);
+}
+
+.marThumbActive{
+    background: rgba(231,223,212,.14);
+    border-color: rgba(231,223,212,.34);
+}
+
+.marThumbImg{
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,.25);
+    filter: contrast(1.05) saturate(.95);
+}
+
+.marThumbLabel{
+    font-size: 13px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .85;
+}
