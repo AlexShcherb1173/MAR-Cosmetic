@@ -108,8 +108,7 @@ export default function Footer() {
                 </div>
 
                 <div className="footerBottom">
-                    <span>© {new Date().getFullYear()} MAR& Hair Collection</span>
-                    <span>Quiet luxury</span>
+                     <span>Quiet luxury</span>
                 </div>
                 <div className="footerBottom">
                     <span>© {new Date().getFullYear()} MAR& Hair Collection</span>
