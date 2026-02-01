@@ -87,8 +87,10 @@
 
 .heroBrand img{
     filter: none !important;
+    mix-blend-mode: normal !important;
+    backdrop-filter: none !important;
+    transform: none !important;
     opacity: .92;
-    mix-blend-mode: normal;
     display: block;
     height: 64px;
     width: auto;

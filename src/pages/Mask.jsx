@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header.jsx";
 import Section from "../components/Section.jsx";
 import Footer from "../components/Footer.jsx";
+import logoLight from "../assets/logo/mar-logo-light.png";
 
 export default function Mask() {
     return (
@@ -10,13 +11,19 @@ export default function Mask() {
 
             <Section>
                 <div className="kicker">Product</div>
-                <h1 className="h1">MAR& Hair Mask</h1>
-                <p className="p" style={{ maxWidth: 740 }}>
+
+                {/* ✅ вместо текстового MAR& */}
+                <div className="titleRow" style={{ marginTop: 10 }}>
+                    <img className="brandLogoFixed" src={logoLight} alt="MAR&" />
+                    <span className="titleText">HAIR MASK</span>
+                </div>
+
+                <p className="p" style={{ maxWidth: 740, marginTop: 14 }}>
                     Интенсивная маска для длины. Мягкость, плотность и естественный блеск — без утяжеления.
                 </p>
 
                 <div style={{ display: "flex", gap: 12, marginTop: 20, flexWrap: "wrap" }}>
-                    <button className="btn btnSolid" type="button">Купить / Запросить прайс</button>
+                    <button className="btn btnSolid" type="button">Купить</button>
                     <span className="softLabel">300 ml • now</span>
                     <span className="softLabel">500 ml • soon</span>
                 </div>

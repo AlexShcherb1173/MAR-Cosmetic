@@ -25,7 +25,6 @@ export default function Hero() {
 
     const active = slides[activeIndex];
 
-    // тихое автопереключение 6–8 сек (random)
     useEffect(() => {
         if (paused) return;
 
@@ -62,7 +61,7 @@ export default function Hero() {
                     </p>
 
                     <div className={styles.actions}>
-                        <Link className="btn btnSolid" to="/mask">Открыть маску</Link>
+                        <Link className="btn btnSolid" to="/mask">Маска</Link>
                         <button type="button" className="btn" onClick={() => scrollToId("about")}>
                             О бренде
                         </button>
@@ -81,6 +80,7 @@ export default function Hero() {
                     <div className={styles.overlay} />
 
                     <div className={styles.caption}>
+                        {/* 🔒 logo safe wrapper */}
                         <div className={styles.heroBrand}>
                             <img src={logoLight} alt="MAR&" />
                         </div>
