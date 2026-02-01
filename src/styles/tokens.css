@@ -15,8 +15,9 @@
     --shadow-soft: 0 18px 45px rgba(0,0,0,.28);
 
     /* Typography */
-    --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    --font-serif: ui-serif, "Georgia", "Times New Roman", serif;
+    --font-sans: "Mantonico", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-serif: "BavariaGates", ui-serif, Georgia, "Times New Roman", serif;
+    --font-display: "Lack", ui-sans-serif, system-ui, sans-serif;
 
     /* Layout */
     --container: 1120px;

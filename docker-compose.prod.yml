@@ -5,3 +5,20 @@ services:
     restart: always
     ports:
       - "80:80"
+    depends_on:
+      - mar-api
+
+  mar-api:
+    build: ./api
+    container_name: mar-api
+    restart: always
+    environment:
+      - PORT=3001
+      - TG_BOT_TOKEN=${TG_BOT_TOKEN}
+      - TG_CHAT_ID=${TG_CHAT_ID}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - MAIL_TO=${MAIL_TO}
+      - MAIL_FROM=${MAIL_FROM}

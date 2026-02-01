@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Footer() {
+    const [name, setName] = useState("");
+    const [contact, setContact] = useState("");
+    const [message, setMessage] = useState("");
+    const [status, setStatus] = useState("idle"); // idle | sending | ok | error
+
+    async function submit() {
+        setStatus("sending");
+        try {
+            const r = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, contact, message }),
+            });
+            const data = await r.json();
+            if (!data.ok) throw new Error("bad");
+            setStatus("ok");
+            setName(""); setContact(""); setMessage("");
+        } catch {
+            setStatus("error");
+        }
+    }
+
     return (
         <footer id="contact" style={{ padding: "70px 0", borderTop: "1px solid var(--line)", background: "rgba(0,0,0,.10)" }}>
             <div className="container" style={{ display: "grid", gridTemplateColumns: "1.2fr .8fr", gap: 18 }}>
@@ -8,25 +30,25 @@ export default function Footer() {
                     <div style={{ fontFamily: "var(--font-serif)", fontSize: 26, color: "var(--beige)" }}>MAR&</div>
                     <div className="kicker" style={{ marginTop: 6 }}>Luxury for your hair</div>
                     <p className="p" style={{ marginTop: 14, maxWidth: 520 }}>
-                        Тихая, осознанная, настоящая.
-                        Для сотрудничества и закупок: оставьте контакт — мы ответим.
+                        Тихая, осознанная, настоящая. Для сотрудничества и закупок — оставьте контакт.
                     </p>
                 </div>
 
                 <div className="card" style={{ padding: 18 }}>
                     <div className="kicker">Связаться</div>
+
                     <div style={{ display: "grid", gap: 10, marginTop: 12 }}>
-                        <input placeholder="Имя" style={inpStyle} />
-                        <input placeholder="Телефон или Email" style={inpStyle} />
-                        <button className="btn btnSolid" type="button">Отправить</button>
-                        <div className="kicker" style={{ opacity: 0.7 }}>Форма-заглушка: подключишь к CRM/почте</div>
+                        <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Имя" style={inpStyle} />
+                        <input value={contact} onChange={(e)=>setContact(e.target.value)} placeholder="Телефон или Email" style={inpStyle} />
+                        <textarea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="Сообщение (необязательно)" rows={4} style={{...inpStyle, borderRadius: 16}} />
+                        <button className="btn btnSolid" type="button" onClick={submit} disabled={status==="sending"}>
+                            {status==="sending" ? "Отправляем..." : "Отправить"}
+                        </button>
+
+                        {status === "ok" && <div className="kicker" style={{ color: "var(--beige)" }}>Готово. Мы скоро ответим.</div>}
+                        {status === "error" && <div className="kicker" style={{ color: "rgba(255,180,180,.9)" }}>Не удалось отправить. Попробуйте ещё раз.</div>}
                     </div>
                 </div>
-            </div>
-
-            <div className="container" style={{ marginTop: 18, display: "flex", justifyContent: "space-between", color: "rgba(231,223,212,.70)", fontSize: 12 }}>
-                <span>© {new Date().getFullYear()} MAR& Hair Collection</span>
-                <span>Designed in quiet luxury</span>
             </div>
         </footer>
     );

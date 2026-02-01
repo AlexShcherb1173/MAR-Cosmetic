@@ -15,30 +15,30 @@ export default function Hero() {
         []
     );
 
-    const [activeIndex, setActiveIndex] = useState(2); // по умолчанию "волосы"
+    const [activeIndex, setActiveIndex] = useState(0);
     const [paused, setPaused] = useState(false);
-    const intervalRef = useRef(null);
+    const timerRef = useRef(null);
 
     const active = slides[activeIndex];
 
-    // Автопереключение раз в 7 секунд (в диапазоне 6–8)
+    // тихое автопереключение 6–8 сек (random)
     useEffect(() => {
         if (paused) return;
 
-        function scheduleNext() {
+        const scheduleNext = () => {
             const delay = Math.floor(Math.random() * (8000 - 6000 + 1)) + 6000;
 
-            intervalRef.current = setTimeout(() => {
+            timerRef.current = setTimeout(() => {
                 setActiveIndex((i) => (i + 1) % slides.length);
-                scheduleNext(); // планируем следующий шаг
+                scheduleNext();
             }, delay);
-        }
+        };
 
-    function goTo(index) {
-        setActiveIndex(index);
-    }
+        scheduleNext();
 
-    // Пауза при наведении
+        return () => clearTimeout(timerRef.current);
+    }, [paused, slides.length]);
+
     const pauseHandlers = {
         onMouseEnter: () => setPaused(true),
         onMouseLeave: () => setPaused(false),
@@ -60,7 +60,9 @@ export default function Hero() {
                 {/* LEFT */}
                 <div>
                     <div className="softLabel">Quiet luxury • Hair care</div>
+
                     <div className="h1">Luxury for your hair</div>
+
                     <p className="p" style={{ maxWidth: 560 }}>
                         <span style={{ color: "var(--beige)" }}>Тихая. Осознанная. Настоящая.</span>{" "}
                         Уход, который не требует громких обещаний. Тактильные текстуры, чистая эстетика, спокойный результат.
@@ -75,40 +77,11 @@ export default function Hero() {
                         </a>
                     </div>
 
-                    {/* Thumbnails */}
-                    <div style={{ marginTop: 22 }}>
-                        <div className="kicker" style={{ marginBottom: 10, opacity: 0.85 }}>
-                            Визуалы
-                        </div>
-
-                        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }} {...pauseHandlers}>
-                            {slides.map((s, idx) => {
-                                const isActive = idx === activeIndex;
-                                return (
-                                    <button
-                                        key={s.key}
-                                        type="button"
-                                        className={`marThumb ${isActive ? "marThumbActive" : ""}`}
-                                        onClick={() => goTo(idx)}
-                                        aria-label={`Показать: ${s.label}`}
-                                    >
-                                        <img src={s.img} alt={s.label} className="marThumbImg" />
-                                        <span className="marThumbLabel">{s.label}</span>
-                                    </button>
-                                );
-                            })}
-                        </div>
-
-                        <div className="kicker" style={{ marginTop: 10, opacity: 0.7 }}>
-                            {paused ? "Пауза" : "Авто-переключение • 7 сек"}
-                        </div>
-                    </div>
-
                     <div
                         style={{
                             display: "flex",
                             gap: 18,
-                            marginTop: 18,
+                            marginTop: 22,
                             flexWrap: "wrap",
                             color: "rgba(231,223,212,.80)",
                         }}
@@ -119,11 +92,10 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {/* RIGHT: HERO VISUAL */}
-                <div className="card" style={{ position: "relative", minHeight: 440 }} {...pauseHandlers}>
-                    <CrossFadeImage src={active.img} alt={`MAR& — ${active.label}`} cacheKey={active.key} />
+                {/* RIGHT */}
+                <div className="card" style={{ position: "relative", minHeight: 440, overflow: "hidden" }} {...pauseHandlers}>
+                    <CrossFadeImage src={active.img} alt="MAR& visual" cacheKey={active.key} />
 
-                    {/* премиум-оверлей */}
                     <div
                         style={{
                             position: "absolute",
@@ -135,11 +107,12 @@ export default function Hero() {
                         }}
                     />
 
-                    {/* подпись */}
                     <div style={{ position: "absolute", left: 22, right: 22, bottom: 18 }}>
-                        <div style={{ fontFamily: "var(--font-serif)", fontSize: 30, color: "var(--beige)" }}>MAR&</div>
+                        <div className="brandMark" style={{ fontSize: 28, color: "var(--beige)" }}>
+                            MAR&
+                        </div>
                         <div className="kicker" style={{ opacity: 0.9 }}>
-                            HAIR COLLECTION • {active.label}
+                            HAIR COLLECTION
                         </div>
                     </div>
                 </div>
@@ -149,7 +122,6 @@ export default function Hero() {
 }
 
 function CrossFadeImage({ src, alt, cacheKey }) {
-    // простой, но красивый fade при смене (quiet luxury)
     return (
         <img
             key={cacheKey}
