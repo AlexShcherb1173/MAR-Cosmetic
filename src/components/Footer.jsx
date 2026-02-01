@@ -111,6 +111,15 @@ export default function Footer() {
                     <span>© {new Date().getFullYear()} MAR& Hair Collection</span>
                     <span>Quiet luxury</span>
                 </div>
+                <div className="footerBottom">
+                    <span>© {new Date().getFullYear()} MAR& Hair Collection</span>
+
+                    <div className="footerSocial">
+                        <a className="footerSocialLink" href="https://t.me/yourbrand" target="_blank" rel="noreferrer">Telegram</a>
+                        <a className="footerSocialLink" href="https://instagram.com/yourbrand" target="_blank" rel="noreferrer">Instagram</a>
+                        <a className="footerSocialLink" href="https://www.tiktok.com/@yourbrand" target="_blank" rel="noreferrer">TikTok</a>
+                    </div>
+                </div>
             </div>
         </footer>
     );
