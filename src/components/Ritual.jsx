@@ -17,7 +17,7 @@ export default function Ritual() {
                 <img
                     src={logoLight}
                     alt="MAR&"
-                    className="brandLogoInline"
+                    className="brandLogo"
                 />
                 который не видно — но чувствуется
             </h2>
