@@ -10,7 +10,7 @@ export default function Ritual() {
 
     return (
         <Section>
-            <div className="kicker">Ритуал</div>
+            <div className="kicker">Действие</div>
             <h2 className="h2">Уход, который не видно — но чувствуется</h2>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginTop: 18 }}>
