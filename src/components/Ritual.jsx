@@ -11,7 +11,15 @@ export default function Ritual() {
     return (
         <Section>
             <div className="kicker">Действие</div>
-            <h2 className="h2">Уход, который не видно — но чувствуется</h2>
+            <h2 className="h2 titleWithLogo">
+                Уход
+                <img
+                    src={logoLight}
+                    alt="MAR&"
+                    className="brandLogoInline"
+                />
+                который не видно — но чувствуется
+            </h2>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginTop: 18 }}>
                 {items.map((x) => (
