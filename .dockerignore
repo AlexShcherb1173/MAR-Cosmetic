@@ -1,0 +1,26 @@
+# dependencies
+node_modules
+api/node_modules
+
+# build output
+dist
+build
+
+# Vite / caches
+.vite
+npm-cache
+.yarn
+.pnpm-store
+
+# git / ide
+.git
+.github
+.idea
+.vscode
+
+# OS
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
