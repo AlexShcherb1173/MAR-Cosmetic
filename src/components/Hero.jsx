@@ -1,16 +1,20 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Hero.module.css";
 
 import heroBox from "../assets/hero-box.jpg";
 import heroJars from "../assets/hero-jars.jpg";
 import heroHair from "../assets/hero-hair.jpg";
+import logoLight from "../assets/logo/mar-logo-light.png";
+
+import { scrollToId } from "../utils/scrollToId";
 
 export default function Hero() {
     const slides = useMemo(
         () => [
-            { key: "box", label: "Коробка", img: heroBox },
-            { key: "jars", label: "Банки", img: heroJars },
-            { key: "hair", label: "Волосы", img: heroHair },
+            { key: "box", img: heroBox },
+            { key: "jars", img: heroJars },
+            { key: "hair", img: heroHair },
         ],
         []
     );
@@ -27,7 +31,6 @@ export default function Hero() {
 
         const scheduleNext = () => {
             const delay = Math.floor(Math.random() * (8000 - 6000 + 1)) + 6000;
-
             timerRef.current = setTimeout(() => {
                 setActiveIndex((i) => (i + 1) % slides.length);
                 scheduleNext();
@@ -35,7 +38,6 @@ export default function Hero() {
         };
 
         scheduleNext();
-
         return () => clearTimeout(timerRef.current);
     }, [paused, slides.length]);
 
@@ -47,20 +49,11 @@ export default function Hero() {
     };
 
     return (
-        <section style={{ padding: "86px 0 70px" }}>
-            <div
-                className="container"
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "1.1fr .9fr",
-                    gap: 28,
-                    alignItems: "center",
-                }}
-            >
+        <section className={styles.hero}>
+            <div className={`container ${styles.grid}`}>
                 {/* LEFT */}
-                <div>
+                <div className={styles.left}>
                     <div className="softLabel">Quiet luxury • Hair care</div>
-
                     <div className="h1">Luxury for your hair</div>
 
                     <p className="p" style={{ maxWidth: 560 }}>
@@ -68,24 +61,14 @@ export default function Hero() {
                         Уход, который не требует громких обещаний. Тактильные текстуры, чистая эстетика, спокойный результат.
                     </p>
 
-                    <div style={{ display: "flex", gap: 12, marginTop: 22, flexWrap: "wrap" }}>
-                        <Link className="btn btnSolid" to="/mask">
-                            Открыть маску
-                        </Link>
-                        <a className="btn" href="#about">
+                    <div className={styles.actions}>
+                        <Link className="btn btnSolid" to="/mask">Открыть маску</Link>
+                        <button type="button" className="btn" onClick={() => scrollToId("about")}>
                             О бренде
-                        </a>
+                        </button>
                     </div>
 
-                    <div
-                        style={{
-                            display: "flex",
-                            gap: 18,
-                            marginTop: 22,
-                            flexWrap: "wrap",
-                            color: "rgba(231,223,212,.80)",
-                        }}
-                    >
+                    <div className={styles.kickerLine}>
                         <span className="kicker">SOFT TOUCH LABEL</span>
                         <span className="kicker">DARK BROWN JAR</span>
                         <span className="kicker">BEIGE IDENTITY</span>
@@ -93,49 +76,16 @@ export default function Hero() {
                 </div>
 
                 {/* RIGHT */}
-                <div className="card" style={{ position: "relative", minHeight: 440, overflow: "hidden" }} {...pauseHandlers}>
-                    <CrossFadeImage src={active.img} alt="MAR& visual" cacheKey={active.key} />
+                <div className={`card ${styles.visual}`} {...pauseHandlers}>
+                    <img key={active.key} src={active.img} alt="MAR& visual" className={styles.image} />
+                    <div className={styles.overlay} />
 
-                    <div
-                        style={{
-                            position: "absolute",
-                            inset: 0,
-                            background:
-                                "radial-gradient(700px 520px at 70% 25%, rgba(231,223,212,.12), transparent 60%)," +
-                                "linear-gradient(180deg, rgba(11,7,6,.16), rgba(11,7,6,.62))",
-                            pointerEvents: "none",
-                        }}
-                    />
-
-                    <div style={{ position: "absolute", left: 22, right: 22, bottom: 18 }}>
-                        <div className="brandMark" style={{ fontSize: 28, color: "var(--beige)" }}>
-                            MAR&
-                        </div>
-                        <div className="kicker" style={{ opacity: 0.9 }}>
-                            HAIR COLLECTION
-                        </div>
+                    <div className={styles.caption}>
+                        <img src={logoLight} alt="MAR& Hair Collection" className={styles.logo} />
+                        <div className="kicker" style={{ opacity: 0.9 }}>HAIR COLLECTION</div>
                     </div>
                 </div>
             </div>
         </section>
-    );
-}
-
-function CrossFadeImage({ src, alt, cacheKey }) {
-    return (
-        <img
-            key={cacheKey}
-            src={src}
-            alt={alt}
-            style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-                filter: "contrast(1.05) saturate(0.92)",
-                transform: "scale(1.02)",
-                animation: "marFade .45s ease both",
-            }}
-        />
     );
 }

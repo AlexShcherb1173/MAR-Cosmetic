@@ -15,11 +15,17 @@
     --shadow-soft: 0 18px 45px rgba(0,0,0,.28);
 
     /* Typography */
-    --font-sans: "Mantonico", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    --font-serif: "BavariaGates", ui-serif, Georgia, "Times New Roman", serif;
-    --font-display: "Lack", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: var(--ff-sans);
+    --font-serif: var(--ff-serif);
+    --font-display: var(--ff-display);
 
     /* Layout */
     --container: 1120px;
     --pad: 22px;
+
+    --ff-sans: "Mantonico", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --ff-serif: "BavariaGates", ui-serif, Georgia, "Times New Roman", serif;
+    --ff-display: "Lack", ui-sans-serif, system-ui, sans-serif;
 }
+
+

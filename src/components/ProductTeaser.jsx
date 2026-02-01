@@ -1,6 +1,7 @@
 import React from "react";
 import Section from "./Section.jsx";
 import { Link } from "react-router-dom";
+import { scrollToId } from "../utils/scrollToId";
 
 export default function ProductTeaser() {
     return (
@@ -18,8 +19,14 @@ export default function ProductTeaser() {
                         Интенсивный уход без утяжеления. Мягкость, плотность и естественный блеск — в спокойном, тактильном ритуале.
                     </p>
                     <div style={{ display: "flex", gap: 12, marginTop: 18, flexWrap: "wrap" }}>
-                        <Link className="btn btnSolid" to="/mask">Страница маски</Link>
-                        <a className="btn" href="#contact">Запросить прайс</a>
+                        <Link className="btn btnSolid" to="/mask">Маска</Link>
+                        <button
+                            type="button"
+                            className="btn"
+                            onClick={() => scrollToId("contact")}
+                        >
+                            Прайс
+                        </button>
                     </div>
 
                     <p className="kicker" style={{ marginTop: 14, opacity: 0.8 }}>In development • 500 ml</p>
@@ -29,7 +36,7 @@ export default function ProductTeaser() {
                     <div className="card" style={{ padding: 18 }}>
                         <div className="kicker">why it feels premium</div>
                         <p className="p" style={{ marginTop: 8 }}>
-                            Тёмно-коричневая банка + soft touch этикетка бежевого корпоративного стиля.
+                            Здесь надо что то написать
                         </p>
                     </div>
                     <div className="card" style={{ padding: 18 }}>

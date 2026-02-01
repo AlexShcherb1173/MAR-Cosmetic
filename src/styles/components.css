@@ -1,0 +1,209 @@
+/* ===== Header ===== */
+.siteHeader{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(14px);
+    background: rgba(11,7,6,.72);
+    border-bottom: 1px solid var(--line);
+}
+
+.siteHeaderInner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 74px;
+}
+
+.brandLink{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brandLogo{
+    height: 34px;
+    width: auto;
+    display: block;
+}
+
+.siteNav{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.navItem{
+    color: rgba(231,223,212,.80);
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: background .12s ease, border-color .12s ease;
+}
+
+.navItemActive{
+    color: var(--beige);
+    background: rgba(231,223,212,.10);
+    border-color: rgba(231,223,212,.18);
+}
+
+
+/* ===== Footer ===== */
+.siteFooter{
+    background: rgba(11,7,6,.92);
+    color: var(--beige);
+    padding: 64px 0 42px;
+    margin-top: 80px;
+    border-top: 1px solid rgba(231,223,212,.18);
+}
+
+.footerTop{
+    display: grid;
+    place-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.footerLogo{
+    height: 54px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
+}
+
+.footerTagline{
+    font-family: "Mantonico", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: .78;
+}
+
+.footerText{
+    margin: 0;
+    max-width: 720px;
+    line-height: 1.7;
+    opacity: .80;
+}
+
+.footerDivider{
+    height: 1px;
+    background: rgba(231,223,212,.18);
+    margin: 28px 0;
+}
+
+.footerFormShell{
+    max-width: 720px;
+    margin: 0 auto;
+    border-radius: 22px;
+    border: 1px solid rgba(231,223,212,.20);
+    background: rgba(231,223,212,.06);
+    box-shadow: 0 22px 70px rgba(0,0,0,.28);
+    backdrop-filter: blur(12px);
+    padding: 18px;
+}
+
+.footerFormHeader{
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.footerFormTitle{
+    font-size: 13px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: .80;
+}
+
+.footerFormStatus{
+    font-size: 12px;
+    opacity: .70;
+}
+
+.footerFormGrid{
+    display: grid;
+    gap: 10px;
+}
+
+.footerFormGridTwo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.inputDarkBeige{
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(231,223,212,.22);
+    outline: none;
+    background: rgba(11,7,6,.35);
+    color: var(--beige);
+}
+
+.btnBeigeOnDark{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 12px 16px;
+    border: 1px solid rgba(231,223,212,.28);
+    background: var(--beige);
+    color: #111;
+    cursor: pointer;
+    transition: transform .12s ease, opacity .12s ease;
+}
+
+.btnBeigeOnDark:disabled{
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+.footerFormActions{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.footerNote{
+    font-size: 11px;
+    opacity: .60;
+    margin-top: 6px;
+}
+
+.footerBottom{
+    margin-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    opacity: .65;
+}
+
+.footerMsgOk{
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    opacity: .75;
+}
+
+.footerMsgErr{
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,180,180,.92);
+}
+
+@media (max-width: 720px) {
+    .footerFormGridTwo {
+        grid-template-columns: 1fr !important;
+    }
+}

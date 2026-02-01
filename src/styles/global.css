@@ -1,20 +1,23 @@
 @import "./fonts.css";
 @import "./tokens.css";
-@import "./tokens.css";
+@import "./components.css";
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+
 body{
     margin: 0;
-    background: radial-gradient(1200px 700px at 20% -10%, rgba(231,223,212,.10), transparent 60%),
-    radial-gradient(900px 520px at 90% 20%, rgba(231,223,212,.08), transparent 55%),
-    linear-gradient(180deg, var(--bg), var(--bg2));
+    background:
+            radial-gradient(1200px 700px at 20% -10%, rgba(231,223,212,.10), transparent 60%),
+            radial-gradient(900px 520px at 90% 20%, rgba(231,223,212,.08), transparent 55%),
+            linear-gradient(180deg, var(--bg), var(--bg2));
     color: var(--ink);
-    .h1, .h2 { font-family: var(--font-serif); }
-    body { font-family: var(--font-sans); }
-    .brandMark { font-family: var(--font-display); letter-spacing: -0.02em; }
     letter-spacing: 0.2px;
+
+    /* ✅ fallback + generic, чтобы WebStorm не ругался */
+    font-family: "Mantonico", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
+
 a{ color: inherit; text-decoration: none; }
 img{ max-width: 100%; display: block; }
 
@@ -37,10 +40,11 @@ img{ max-width: 100%; display: block; }
     text-transform: uppercase;
     letter-spacing: .18em;
     font-size: 12px;
+    font-family: "Mantonico", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 .h1{
-    font-family: var(--font-serif);
+    font-family: "BavariaGates", ui-serif, Georgia, "Times New Roman", serif;
     font-size: clamp(38px, 5vw, 64px);
     line-height: 1.02;
     letter-spacing: -0.02em;
@@ -48,7 +52,7 @@ img{ max-width: 100%; display: block; }
 }
 
 .h2{
-    font-family: var(--font-serif);
+    font-family: "BavariaGates", ui-serif, Georgia, "Times New Roman", serif;
     font-size: clamp(26px, 3.2vw, 40px);
     line-height: 1.08;
     letter-spacing: -0.01em;
@@ -84,7 +88,7 @@ img{ max-width: 100%; display: block; }
 .btnSolid{
     background: var(--beige);
     color: #140d0b;
-    border-color: rgba(0,0,0,.0);
+    border-color: rgba(0,0,0,0);
 }
 .btnSolid:hover{ background: #efe7dc; }
 
@@ -105,64 +109,30 @@ img{ max-width: 100%; display: block; }
     gap: 8px;
     color: rgba(231,223,212,.88);
     font-size: 13px;
+    font-family: "Mantonico", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-@keyframes marFade {
-    from { opacity: 0; transform: scale(1.03); }
-    to   { opacity: 1; transform: scale(1.02); }
+/* ✅ brand mark (на случай, если где-то ещё используется текстовый MAR&) */
+.brandMark{
+    font-family: "Lack", ui-sans-serif, system-ui, sans-serif;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "clig" 0, "calt" 0, "salt" 0;
 }
 
-@keyframes marFade {
-    from { opacity: 0; transform: scale(1.03); }
-    to   { opacity: 1; transform: scale(1.02); }
+header img {
+    transition: opacity .25s ease;
 }
-
-/* Thumbnails (мини-превью) */
-.marThumb{
-    display: grid;
-    grid-template-columns: 54px 1fr;
-    gap: 10px;
-    align-items: center;
-
-    padding: 10px 12px;
-    border-radius: 16px;
-    border: 1px solid rgba(231,223,212,.16);
-    background: rgba(231,223,212,.06);
-    color: rgba(231,223,212,.86);
-
-    cursor: pointer;
-    transition: transform .12s ease, background .12s ease, border-color .12s ease;
-    min-width: 180px;
-}
-
-.marThumb:hover{
-    transform: translateY(-1px);
-    background: rgba(231,223,212,.10);
-    border-color: rgba(231,223,212,.26);
-}
-
-.marThumbActive{
-    background: rgba(231,223,212,.14);
-    border-color: rgba(231,223,212,.34);
-}
-
-.marThumbImg{
-    width: 54px;
-    height: 54px;
-    object-fit: cover;
-    border-radius: 14px;
-    border: 1px solid rgba(0,0,0,.25);
-    filter: contrast(1.05) saturate(.95);
-}
-
-.marThumbLabel{
-    font-size: 13px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+header a:hover img {
     opacity: .85;
 }
 
 @keyframes marFade {
     from { opacity: 0; transform: scale(1.03); }
     to   { opacity: 1; transform: scale(1.02); }
+}
+
+@media (max-width: 720px) {
+    .footerFormGridTwo {
+        grid-template-columns: 1fr !important;
+    }
 }
