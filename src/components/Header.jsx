@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import logoLight from "../assets/logo/mar-logo-light.jpg";
+import logoLight from "../assets/logo/mar-logo-light.png";
 import { scrollToId } from "../utils/scrollToId";
 
 export default function Header() {
