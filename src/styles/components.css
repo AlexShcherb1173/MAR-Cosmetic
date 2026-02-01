@@ -267,3 +267,34 @@
     opacity: .92;
     border-color: rgba(231,223,212,.35);
 }
+
+.ritualTitle {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+
+    font-family: "BavariaGates", ui-serif, Georgia, "Times New Roman", serif;);
+    line-height: 1.15;
+    color: var(--beige);
+
+    white-space: nowrap; /* 💡 если прям строго в одну строку */
+}
+
+.ritualBrand {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.ritualBrand img {
+    height: 0.9em;      /* 👈 магия: подстраивается под текст */
+    width: auto;
+    margin: 0 4px;
+    vertical-align: baseline;
+}
+
+@media (max-width: 720px) {
+    .ritualTitle {
+        flex-wrap: wrap;
+        white-space: normal;
+    }
+}

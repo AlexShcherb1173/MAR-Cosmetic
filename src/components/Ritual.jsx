@@ -12,13 +12,11 @@ export default function Ritual() {
     return (
         <Section>
             <div className="kicker">Действие</div>
-            <h2 className="h2 titleWithLogo">
+            <h2 className="ritualTitle">
                 Уход
-                <img
-                    src={logoLight}
-                    alt="MAR&"
-                    className="brandLogo"
-                />
+                <span className="ritualBrand">
+                <img src={logoLight} alt="MAR&" />
+                </span>
                 который не видно — но чувствуется
             </h2>
 
