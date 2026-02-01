@@ -207,3 +207,13 @@
         grid-template-columns: 1fr !important;
     }
 }
+
+/* ===== Brand logo protection ===== */
+.brandLogo,
+.footerLogo {
+    filter: none !important;
+    backdrop-filter: none !important;
+    mix-blend-mode: normal !important;
+    object-fit: contain;
+    image-rendering: auto;
+}

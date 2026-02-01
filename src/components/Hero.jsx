@@ -81,7 +81,10 @@ export default function Hero() {
                     <div className={styles.overlay} />
 
                     <div className={styles.caption}>
-                        <img src={logoLight} alt="MAR& Hair Collection" className={styles.logo} />
+                        <div className={styles.heroBrand}>
+                            <img src={logoLight} alt="MAR&" />
+                        </div>
+
                         <div className="kicker" style={{ opacity: 0.9 }}>HAIR COLLECTION</div>
                     </div>
                 </div>

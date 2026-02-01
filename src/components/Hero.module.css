@@ -83,7 +83,14 @@
     .visual {
         min-height: 380px;
     }
-    .logo {
-        height: 56px;
-    }
+}
+
+.heroBrand img{
+    filter: none !important;
+    opacity: .92;
+    mix-blend-mode: normal;
+    display: block;
+    height: 64px;
+    width: auto;
+    object-fit: contain;
 }
