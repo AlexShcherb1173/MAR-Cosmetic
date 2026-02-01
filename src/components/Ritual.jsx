@@ -1,6 +1,6 @@
 import React from "react";
 import Section from "./Section.jsx";
-import logoLight from "../assets/logo/mar-logo-light1.png";
+import logoLight from "../assets/logo/mar-logo1-light.png";
 
 export default function Ritual() {
     const items = [
