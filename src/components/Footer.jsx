@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logoLight from "../assets/logo/mar-logo-light.png";
+import logoLight from "../assets/logo/mar-logo-light.jpg";
 
 export default function Footer() {
     const [name, setName] = useState("");

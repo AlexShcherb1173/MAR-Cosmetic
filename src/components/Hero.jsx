@@ -5,7 +5,7 @@ import styles from "./Hero.module.css";
 import heroBox from "../assets/hero-box.jpg";
 import heroJars from "../assets/hero-jars.jpg";
 import heroHair from "../assets/hero-hair.jpg";
-import logoLight from "../assets/logo/mar-logo-light.png";
+import logoLight from "../assets/logo/mar-logo-light.jpg";
 
 import { scrollToId } from "../utils/scrollToId";
 
